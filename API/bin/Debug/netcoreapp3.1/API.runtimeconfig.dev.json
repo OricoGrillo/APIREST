@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "/home/orico/.dotnet/store/|arch|/|tfm|",
+      "/home/orico/.nuget/packages"
+    ]
+  }
+}

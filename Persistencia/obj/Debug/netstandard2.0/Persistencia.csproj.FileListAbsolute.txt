@@ -1,0 +1,11 @@
+/home/orico/Documents/delasalle/aplicacion/Persistencia/bin/Debug/netstandard2.0/Persistencia.deps.json
+/home/orico/Documents/delasalle/aplicacion/Persistencia/bin/Debug/netstandard2.0/Persistencia.dll
+/home/orico/Documents/delasalle/aplicacion/Persistencia/bin/Debug/netstandard2.0/Persistencia.pdb
+/home/orico/Documents/delasalle/aplicacion/Persistencia/bin/Debug/netstandard2.0/Dominio.dll
+/home/orico/Documents/delasalle/aplicacion/Persistencia/bin/Debug/netstandard2.0/Dominio.pdb
+/home/orico/Documents/delasalle/aplicacion/Persistencia/obj/Debug/netstandard2.0/Persistencia.csprojAssemblyReference.cache
+/home/orico/Documents/delasalle/aplicacion/Persistencia/obj/Debug/netstandard2.0/Persistencia.AssemblyInfoInputs.cache
+/home/orico/Documents/delasalle/aplicacion/Persistencia/obj/Debug/netstandard2.0/Persistencia.AssemblyInfo.cs
+/home/orico/Documents/delasalle/aplicacion/Persistencia/obj/Debug/netstandard2.0/Persistencia.csproj.CopyComplete
+/home/orico/Documents/delasalle/aplicacion/Persistencia/obj/Debug/netstandard2.0/Persistencia.dll
+/home/orico/Documents/delasalle/aplicacion/Persistencia/obj/Debug/netstandard2.0/Persistencia.pdb

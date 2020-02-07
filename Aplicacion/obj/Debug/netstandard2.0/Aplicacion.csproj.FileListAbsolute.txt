@@ -1,0 +1,13 @@
+/home/orico/Documents/delasalle/aplicacion/Aplicacion/bin/Debug/netstandard2.0/Aplicacion.deps.json
+/home/orico/Documents/delasalle/aplicacion/Aplicacion/bin/Debug/netstandard2.0/Aplicacion.dll
+/home/orico/Documents/delasalle/aplicacion/Aplicacion/bin/Debug/netstandard2.0/Aplicacion.pdb
+/home/orico/Documents/delasalle/aplicacion/Aplicacion/bin/Debug/netstandard2.0/Dominio.dll
+/home/orico/Documents/delasalle/aplicacion/Aplicacion/bin/Debug/netstandard2.0/Persistencia.dll
+/home/orico/Documents/delasalle/aplicacion/Aplicacion/bin/Debug/netstandard2.0/Dominio.pdb
+/home/orico/Documents/delasalle/aplicacion/Aplicacion/bin/Debug/netstandard2.0/Persistencia.pdb
+/home/orico/Documents/delasalle/aplicacion/Aplicacion/obj/Debug/netstandard2.0/Aplicacion.csprojAssemblyReference.cache
+/home/orico/Documents/delasalle/aplicacion/Aplicacion/obj/Debug/netstandard2.0/Aplicacion.AssemblyInfoInputs.cache
+/home/orico/Documents/delasalle/aplicacion/Aplicacion/obj/Debug/netstandard2.0/Aplicacion.AssemblyInfo.cs
+/home/orico/Documents/delasalle/aplicacion/Aplicacion/obj/Debug/netstandard2.0/Aplicacion.csproj.CopyComplete
+/home/orico/Documents/delasalle/aplicacion/Aplicacion/obj/Debug/netstandard2.0/Aplicacion.dll
+/home/orico/Documents/delasalle/aplicacion/Aplicacion/obj/Debug/netstandard2.0/Aplicacion.pdb
