@@ -7,8 +7,12 @@ public class DataContext : DbContext
     {
         
     }
-
     public DbSet<Usuario> Usuarios
+    {
+        get;
+        set;
+    }
+    public DbSet<Perfil> Perfiles
     {
         get;
         set;

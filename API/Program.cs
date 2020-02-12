@@ -16,6 +16,7 @@ namespace API
         public static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
+            // This code is located here to when the API is executed the Migrations are created. 
             // To use CreateScope method is needed to add using Microsoft.Extensions.DependencyInjection;
             using(var scope = host.Services.CreateScope())
             {
