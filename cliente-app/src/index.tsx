@@ -1,9 +1,8 @@
 import React from 'react';
 // This import is to use the render element.
 import ReactDOM from 'react-dom';
-import App from './App';
-import App2 from './app/layouts/App2';
+import App from './app/layouts/App';
+import {BrowserRouter} from 'react-router-dom'
 
 
-
-ReactDOM.render(<App2/>,document.getElementById('root'));
+ReactDOM.render(<BrowserRouter><App/></BrowserRouter>,document.getElementById('root'));

@@ -1,6 +1,6 @@
 
 interface IUsuario{
-    id:string,
+    id:number,
     nombre: string
 }
 

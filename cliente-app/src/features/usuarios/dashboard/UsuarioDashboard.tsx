@@ -1,26 +1,29 @@
 import React from 'react'
 import {Grid,List} from 'semantic-ui-react';
 import IUsuario from '../../../app/modules/IUsuario';
+import UsuarioList from './UsuarioList';
+import UsuarioDetail from '../detail/UsuarioDetail'
+import UsuarioForm from '../forms/UsuarioForm'
 
 interface IProps{
-    usuarios: IUsuario[]
+    usuarios: IUsuario[],
+    usuarioSeleccion: (id:number)  => void,
+    usuarioSeleccionado: IUsuario | null
 }
 
 export const UsuarioDashboard:React.FC<IProps> = (props:IProps) => {
     return (
         <Grid>
+            {/* Columna de listado de Usuarios. */}
             <Grid.Column width={10}>
-                <List>
-                    {
-                        // map is a array type in typescript.
-                        props.usuarios.map((usuario:IUsuario) => (
-                            <List.Item key={usuario.id}>{usuario.nombre}</List.Item>
-                        ))
-                    }
-                </List>
+                <UsuarioList usuarios={props.usuarios} usuarioSeleccion={props.usuarioSeleccion}></UsuarioList>
             </Grid.Column>
-            <Grid.Column width={6}>
 
+            {/* Columna de detalle del Usuario, el componente funcional UsuarioDetail usa Cards, 
+                el otro FC UsuarioForm es el que se muestra debajo de la Card de detalle del Usuario. */}
+            <Grid.Column width={6}>
+                <UsuarioDetail usuarioSeleccionado={props.usuarioSeleccionado}></UsuarioDetail>
+                <UsuarioForm></UsuarioForm>
             </Grid.Column>
         </Grid>
     )
