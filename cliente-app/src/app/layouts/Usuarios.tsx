@@ -59,7 +59,16 @@ class Usuarios extends React.Component{
 
         // Si el objeto de usuario viene vacío significa que debe crear uno nuevo.
         if(usuario.id === 0){
-            
+            Api.Usuario.create(usuario)
+            .then((usuario)=>{
+                usuarios.push(usuario)
+
+                this.setState({
+                    usuarios : usuarios,
+                    usuarioSeleccionado : null,
+                    modoEdicion : false
+                })
+            })
         }
         else{
             Api.Usuario.update(usuario)
@@ -74,6 +83,13 @@ class Usuarios extends React.Component{
                 })
             })
         }
+    }
+
+    handleModoNuevoUsuario=()=>{
+        this.setState({
+            usuarioSeleccionado:null,
+            modoEdicion:true
+        })
     }
 
     
@@ -110,7 +126,8 @@ class Usuarios extends React.Component{
                     usuarioSeleccionado={this.state.usuarioSeleccionado}
                     modoEdicion={this.state.modoEdicion}
                     activarEdicion={this.handleModoEdicion}
-                    guardarUsuario = {this.handleGuardarUsuario}>
+                    guardarUsuario = {this.handleGuardarUsuario}
+                    activarNuevo = {this.handleModoNuevoUsuario}>
 
                 </UsuarioDashboard>          
                 

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Grid,List} from 'semantic-ui-react';
+import {Grid,List, Container, Button} from 'semantic-ui-react';
 import IUsuario from '../../../app/modules/IUsuario';
 import UsuarioList from './UsuarioList';
 import UsuarioDetail from '../detail/UsuarioDetail'
@@ -11,7 +11,8 @@ interface IProps{
     usuarioSeleccionado: IUsuario | null,
     modoEdicion: boolean,
     activarEdicion: (edicion:boolean) => void,
-    guardarUsuario : (usuario:IUsuario) => void
+    guardarUsuario : (usuario:IUsuario) => void,
+    activarNuevo: () => void
 }
 
 export const UsuarioDashboard:React.FC<IProps> = (props:IProps) => {
@@ -19,7 +20,13 @@ export const UsuarioDashboard:React.FC<IProps> = (props:IProps) => {
         <Grid>
             {/* Columna de listado de Usuarios. */}
             <Grid.Column width={10}>
+                {/* Se agrega el Container para meter el botón de Nuevo Usuario aquí. */}
+                <Container textAlign="right">
+                    <Button primary onClick = {() => props.activarNuevo()}>Nuevo Usuario</Button>
+                </Container>
+                
                 <UsuarioList usuarios={props.usuarios} usuarioSeleccion={props.usuarioSeleccion}></UsuarioList>
+
             </Grid.Column>
 
             {/* Columna de detalle del Usuario, el componente funcional UsuarioDetail usa Cards, 
