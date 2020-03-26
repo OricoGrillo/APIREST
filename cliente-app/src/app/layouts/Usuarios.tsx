@@ -2,13 +2,15 @@ import React,{Fragment} from 'react';
 import axios from 'axios';
 import IUsuario from '../modules/IUsuario';
 import UsuarioDashboard from '../../features/usuarios/dashboard/UsuarioDashboard';
-import './styles.css'
-import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
+import './styles.css';
+import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react';
+import Api from '../../api/api'
 
 interface IState{
     usuarios: IUsuario[],
     usuarioSeleccionado: IUsuario | null,
-    obtuvoUsuarios: boolean;
+    obtuvoUsuarios: boolean,
+    modoEdicion: boolean
 }
 
 class Usuarios extends React.Component{    
@@ -16,26 +18,19 @@ class Usuarios extends React.Component{
     readonly state: IState = {
         usuarios:[],
         usuarioSeleccionado: null,
-        obtuvoUsuarios: false
+        obtuvoUsuarios: false,
+        modoEdicion: false
     }
 
     componentDidMount()
     {
-        setTimeout(() => {
-            axios.get<IUsuario[]>('http://localhost:5000/api/usuarios').then((response) => {
-
-                
-                    this.setState({
-                        usuarios: response.data,
-                        obtuvoUsuarios: true
-                    });
-                
-                
-            });
-        },4000);
-
-        //this.setState({usuarios:[{id:1,nombre:'Omar'},{id:2,nombre:'Uriel'}]});
-
+        Api.Usuario.list()
+        .then((Usuarios) => {
+            this.setState({
+                usuarios: Usuarios,
+                obtuvoUsuarios: true
+            })
+        })
         
     }
 
@@ -49,7 +44,38 @@ class Usuarios extends React.Component{
         });
     }
 
-    
+    handleModoEdicion = (edicion:boolean) => {
+
+        let usuario = edicion?this.state.usuarioSeleccionado : null
+
+        this.setState({
+            modoEdicion: edicion,
+            usuarioSeleccionado: usuario
+        });
+    }    
+
+    handleGuardarUsuario=(usuario:IUsuario)=>{
+        let usuarios=this.state.usuarios
+
+        // Si el objeto de usuario viene vacío significa que debe crear uno nuevo.
+        if(usuario.id === 0){
+            
+        }
+        else{
+            Api.Usuario.update(usuario)
+            .then((usuario)=> {
+                let index = usuarios.findIndex(u=> u.id == usuario.id)
+                usuarios[index] = usuario
+
+                this.setState({
+                    usuarios : usuarios,
+                    usuarioSeleccionado : null,
+                    modoEdicion : false
+                })
+            })
+        }
+    }
+
     
     render(){
 
@@ -81,7 +107,10 @@ class Usuarios extends React.Component{
                 <UsuarioDashboard                
                     usuarios={this.state.usuarios} 
                     usuarioSeleccion={this.handleUsuarioSeleccionado} 
-                    usuarioSeleccionado={this.state.usuarioSeleccionado}>
+                    usuarioSeleccionado={this.state.usuarioSeleccionado}
+                    modoEdicion={this.state.modoEdicion}
+                    activarEdicion={this.handleModoEdicion}
+                    guardarUsuario = {this.handleGuardarUsuario}>
 
                 </UsuarioDashboard>          
                 

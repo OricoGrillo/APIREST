@@ -42,16 +42,16 @@ namespace API.Controllers
         {
             _data.Usuarios.Add(usuario);
             _data.SaveChanges();
-            return Ok();        
+            return Ok(usuario);        
         }
 
         [HttpPut]
-        [Route("api/[controller]/{id}")]
+        [Route("api/[controller]")]
         public ActionResult UpdateUsuario([FromBody] Usuario usuario, int id)
         {
             _data.Usuarios.Update(usuario);
             _data.SaveChanges();
-            return Ok();        
+            return Ok(usuario);        
         }
 
         [HttpDelete]

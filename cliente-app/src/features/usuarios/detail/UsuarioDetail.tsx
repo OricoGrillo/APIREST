@@ -3,7 +3,8 @@ import {Card,Image,Button} from 'semantic-ui-react';
 import IUsuario from '../../../app/modules/IUsuario'
 
 interface IProps{
-    usuarioSeleccionado: IUsuario | null
+    usuarioSeleccionado: IUsuario | null,
+    activarEdicion: (edicion:boolean) => void
 }
 
 
@@ -24,8 +25,8 @@ export const UsuarioDetail:React.FC<IProps> = (props:IProps) => {
                 </Card.Content>
                 <Card.Content extra>
                 <Button.Group widths={2}>
-                <Button basic color='blue' content = 'Editar'></Button>
-                <Button basic color='grey' content = 'Cancelar' ></Button>
+                    <Button onClick={()=> props.activarEdicion(true)} basic color='blue' content = 'Editar'></Button>
+                    <Button onClick={()=> props.activarEdicion(false)} basic color='grey' content = 'Cancelar' ></Button>
                 </Button.Group>
             </Card.Content>
         </Card>
