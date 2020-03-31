@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Aplicacion;
+using Aplicacion.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,7 +13,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-
+using Persistencia;
+using Persistencia.Interface;
 
 namespace API
 {
@@ -37,6 +40,13 @@ namespace API
                 var connection = Configuration.GetConnectionString("DefaultConnection");
                 opciones.UseSqlite(connection); 
             });
+
+
+            // Por cada petición se genera una instancia de este objeto, con estas líneas se agrega la inyección de dependencias entre cada clase.
+            // Cuando se mande llamar el UsuariosController en el constructor crea ina instancia a la interfaz IUsuarioService,
+            // en esa momento viene a esta línea y esta línea inyecta un objeto de UsuarioService. 
+            services.AddScoped<IUsuarioService,UsuarioService>();
+            services.AddScoped<IData,SqlData>();
 
             services.AddControllers();            
         }

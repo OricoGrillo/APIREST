@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Aplicacion.Interfaces;
 using Dominio;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,61 +8,67 @@ namespace API.Controllers
 {
     public class UsuariosController : Controller
     {
-        private readonly DataContext _data;
+        private readonly IUsuarioService _service;
 
-        public UsuariosController(DataContext data)
+        public UsuariosController(IUsuarioService service)
         {
-            this._data = data;
+            _service = service;
         }
 
+        //Usando action Results 
         [HttpGet]
-        [Route("api/[controller]")]
-        public ActionResult<IEnumerable<Usuario>> GetUsuarios()
+        [Route("api/[controller]")]        
+        public ActionResult<IEnumerable<Usuario>> Get()
         {
-            var usuarios = _data.Usuarios.ToList();
+            var usuarios =  _service.List();
+
             return Ok(usuarios);
         }
 
         [HttpGet]
         [Route("api/[controller]/{id}")]
-        public ActionResult<Usuario> GetUsuario(int id)
+        public ActionResult<Usuario> GetBydId(int id )
         {
-            var usuario = _data.Usuarios.ToList().Find(x => x.Id == id);
-            
-            if(usuario != null)
+
+            var usuario = _service.GetById(id);
+
+            if(usuario != null )
             {
                 return Ok(usuario);
             }
 
             return NotFound();
-        }
 
-        [HttpPost]
-        [Route("api/[controller]")]
-        public ActionResult CrearUsuario([FromBody] Usuario usuario)
-        {
-            _data.Usuarios.Add(usuario);
-            _data.SaveChanges();
-            return Ok(usuario);        
-        }
-
-        [HttpPut]
-        [Route("api/[controller]")]
-        public ActionResult UpdateUsuario([FromBody] Usuario usuario, int id)
-        {
-            _data.Usuarios.Update(usuario);
-            _data.SaveChanges();
-            return Ok(usuario);        
+        
         }
 
         [HttpDelete]
         [Route("api/[controller]/{id}")]
-        public ActionResult DeleteUsuario(int id)
+        public ActionResult Delete(int id )
         {
-            var usuario = new Usuario { Id = id };
-            _data.Usuarios.Remove(usuario);
-            _data.SaveChanges();
-            return Ok();        
+            var usuario = new Usuario{Id = id};
+
+            _service.Delete(id);
+
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("api/[controller]")]
+        public ActionResult CreateUsuario([FromBody] Usuario usuario)
+        {
+            usuario = _service.Create(usuario);
+
+            return Ok(usuario);
+        }
+
+        [HttpPut]
+        [Route("api/[controller]")]
+        public ActionResult UpdateUsuario([FromBody] Usuario usuario)
+        {
+            usuario = _service.Update(usuario);
+            
+            return Ok(usuario);
         }
     }
 }
